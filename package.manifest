@@ -1,0 +1,12 @@
+{
+	propertyEditors: [{
+		alias: "Vokseverk.ImageHotspot",
+		name: "Image Hotspot",
+		editor: {
+			view: "~/App_Plugins/Vokseverk.ImageHotspot/editor.html",
+			valueType: "JSON"
+		}
+	}],
+	css: ["~/App_Plugins/Vokseverk.ImageHotspot/style.css"],
+	javascript: ["~/App_Plugins/Vokseverk.ImageHotspot/controller.js"]
+}
