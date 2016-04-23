@@ -1,4 +1,5 @@
 angular.module("umbraco").controller("ImageHotspotController", function ($scope, $element) {
+	
 	$scope.theme = 4;
 	$scope.image = {
 		src: "http://placem.at/places",
@@ -9,7 +10,12 @@ angular.module("umbraco").controller("ImageHotspotController", function ($scope,
 	$scope.initDragging = function () {
 		$('.imagehotspot-hotspot', $($element)).draggable({
 			cursorAt: { left: 0, top: 0 },
-			containment: "parent",
+			drag: function (event, ui) {
+				ui.position.left = Math.max(0, ui.position.left);
+				ui.position.left = Math.min(ui.position.left, $scope.image.width);
+				ui.position.top = Math.max(0, ui.position.top);
+				ui.position.top = Math.min(ui.position.top, $scope.image.height);
+			},
 			stop: function (event, ui) {
 				$scope.storePosition(ui.position.left, ui.position.top);
 			}
