@@ -1,10 +1,20 @@
-angular.module("umbraco").controller("ImageHotspotController", function ($scope) {
+angular.module("umbraco").controller("ImageHotspotController", function ($scope, $element) {
 	$scope.theme = 4;
 	$scope.image = {
 		src: "http://placem.at/places",
 		width: 400,
 		height: 300
 	};
+	
+	$scope.initDragging = function () {
+		$('.imagehotspot-hotspot', $($element)).draggable({
+			cursorAt: { left: 0, top: 0 },
+			containment: "parent",
+			start: function (event, ui) { console.log(ui); },
+			drag: function (event, ui) { },
+			stop: function (event, ui) { $scope.storePosition(ui.position.left, ui.position.top); }
+		});
+	}
 	
 	$scope.positionHotspot = function ($event) {
 		var offsetX = $event.offsetX;
@@ -13,9 +23,15 @@ angular.module("umbraco").controller("ImageHotspotController", function ($scope)
 		hotspot.style.left = offsetX + "px";
 		hotspot.style.top = offsetY + "px";
 		
-		$scope.model.value = {
-			left: offsetX,
-			top: offsetY
-		};
+		$scope.storePosition(offsetX, offsetY);
 	};
+	
+	$scope.storePosition = function (x, y) {
+		$scope.model.value = {
+			left: x,
+			top: y
+		};
+	}
+	
+	$scope.initDragging();
 });

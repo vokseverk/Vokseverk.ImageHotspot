@@ -1,6 +1,7 @@
 .imagehotspot-image {
 	position: relative;
 	display: inline-block;
+	cursor: crosshair;
 }
 
 .imagehotspot-hotspot {
@@ -12,6 +13,7 @@
 	border: 3px solid #fff;
 	opacity: 0.8;
 	transform: translate(-50%, -50%);
+	cursor: move;
 }
 
 .theme1 .imagehotspot-hotspot { background: rgb(223, 59, 58); }
