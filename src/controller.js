@@ -10,9 +10,9 @@ angular.module("umbraco").controller("ImageHotspotController", function ($scope,
 		$('.imagehotspot-hotspot', $($element)).draggable({
 			cursorAt: { left: 0, top: 0 },
 			containment: "parent",
-			start: function (event, ui) { console.log(ui); },
-			drag: function (event, ui) { },
-			stop: function (event, ui) { $scope.storePosition(ui.position.left, ui.position.top); }
+			stop: function (event, ui) {
+				$scope.storePosition(ui.position.left, ui.position.top);
+			}
 		});
 	}
 	
