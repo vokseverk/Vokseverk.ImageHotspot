@@ -5,8 +5,28 @@
 		editor: {
 			view: "~/App_Plugins/Vokseverk.ImageHotspot/editor.html",
 			valueType: "JSON"
+		},
+		
+		prevalues: {
+			fields: [
+				{
+					label: "Theme",
+					key: "theme",
+					description: "Choose a theme for the hotspot",
+					view: "~/App_Plugins/Vokseverk.ImageHotspot/theme.html"
+				}
+			]
+		},
+		
+		defaultconfig: {
+			theme: 1
 		}
 	}],
+	
 	css: ["~/App_Plugins/Vokseverk.ImageHotspot/style.css"],
-	javascript: ["~/App_Plugins/Vokseverk.ImageHotspot/controller.js"]
+	
+	javascript: [
+		"~/App_Plugins/Vokseverk.ImageHotspot/controller.js",
+		"~/App_Plugins/Vokseverk.ImageHotspot/themeprevaluecontroller.js"
+	]
 }

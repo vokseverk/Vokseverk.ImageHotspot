@@ -1,0 +1,9 @@
+<div ng-controller="ImageHotspotThemePrevalueController">
+	<ul class="unstyled">
+		<li ng-repeat="preval in model.prevalues">
+			<label class="checkbox">
+				<input type="radio" ng-model="model.value" value="{{ preval.id }}" /> {{ preval.label }}
+			</label>
+		</li>
+	</ul>
+</div>
