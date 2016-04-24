@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE umbPackage [
+	<!ENTITY % version SYSTEM "version.ent">
+	%version;
+]>
+<umbPackage>
+	<files>
+		<file ref="controller.js" />
+		<file ref="themeprevaluecontroller.js" />
+		<file ref="package.manifest" />
+		<file ref="style.css" />
+		<file ref="theme.html" />
+		<file ref="editor.html" />
+	</files>
+	<info>
+		<package>
+			<name>Image Hotspot</name>
+			<version>&packageVersion;</version>
+			<license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
+			<url>http://our.umbraco.org/projects/backoffice-extensions/image-hotspot</url>
+			<requirements>
+				<major>7</major>
+				<minor>0</minor>
+				<patch>0</patch>
+			</requirements>
+		</package>
+		<author>
+			<name>Chriztian Steinmeier</name>
+			<website>http://vokseverk.dk</website>
+		</author>
+		<readme><include xmlns="http://www.w3.org/2001/XInclude" href="../README.md" parse="text" /></readme>
+	</info>
+	<DocumentTypes />
+	<Templates />
+	<Stylesheets />
+	<Macros />
+	<DictionaryItems />
+	<Languages />
+	<DataTypes />
+	<control />
+	<Actions />
+</umbPackage>
