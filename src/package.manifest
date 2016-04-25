@@ -10,6 +10,12 @@
 		prevalues: {
 			fields: [
 				{
+					label: "Image",
+					key: "imageSrc",
+					description: "Choose the image you want to place a hotspot on",
+					view: "imagepicker"
+				},
+				{
 					label: "Theme",
 					key: "theme",
 					description: "Choose a theme for the hotspot",
