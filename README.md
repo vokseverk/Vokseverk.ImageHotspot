@@ -14,19 +14,17 @@ Currently, it looks like this:
 
 ### Configuration:
 
-<figure>
-	<img src="screenshots/ImageHotspot_Config.png" width="467" alt="DataType Configuration" />
-	<figcaption>DataType Configuration</figcaption>
-</figure>
+<img src="screenshots/ImageHotspot_Config.png" width="467" alt="DataType Configuration" />
+
+*DataType Configuration*
 
 ***
 
 ### Property editor:
 
-<figure>
-	<img src="screenshots/ImageHotspot_Themes.png" width="640" alt="Property editor with variant themes" />
-	<figcaption>Property editor with variant themes</figcaption>
-</figure>
+<img src="screenshots/ImageHotspot_Themes.png" width="640" alt="Property editor with variant themes" />
+
+*Property editor with variant themes*
 
 ("Theme" just defines the color of the Hotspot - all four variations shown above)
 
@@ -34,10 +32,9 @@ Currently, it looks like this:
 
 ### Property Data
 
-<figure>
-	<img src="screenshots/ImageHotspot_JSON.png" width="431" alt="JSON Data" />
-	<figcaption>JSON Data</figcaption>
-</figure>
+<img src="screenshots/ImageHotspot_JSON.png" width="431" alt="JSON Data" />
+
+*JSON Data*
 
 The hotspot coordinate is saved both as exact pixel values and as percentage values,
 along with the image's path and width & height.
