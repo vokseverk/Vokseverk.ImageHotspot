@@ -28,7 +28,7 @@
 			<name>Chriztian Steinmeier</name>
 			<website>https://vokseverk.dk</website>
 		</author>
-		<readme><include xmlns="http://www.w3.org/2001/XInclude" href="../README.md" parse="text" /></readme>
+		<readme><include xmlns="http://www.w3.org/2001/XInclude" href="README.txt" parse="text" /></readme>
 	</info>
 	<DocumentTypes />
 	<Templates />
