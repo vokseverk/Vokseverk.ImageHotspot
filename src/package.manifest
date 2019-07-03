@@ -16,9 +16,9 @@
 					view: "imagepicker"
 				},
 				{
-					label: "Theme",
+					label: "Color",
 					key: "theme",
-					description: "Choose a theme for the hotspot",
+					description: "Choose a color for the hotspot",
 					view: "~/App_Plugins/Vokseverk.ImageHotspot/theme.html"
 				}
 			]

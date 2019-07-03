@@ -24,9 +24,9 @@ Currently, it looks like this:
 
 <img src="screenshots/ImageHotspot_Themes.png" width="640" alt="Property editor with variant themes" />
 
-*Property editor with variant themes*
+*Property editor with variant colors*
 
-("Theme" just defines the color of the Hotspot - all four variations shown above)
+("Color" defines the color of the Hotspot - all colors shown above)
 
 ***
 
