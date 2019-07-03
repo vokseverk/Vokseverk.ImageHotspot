@@ -17,7 +17,7 @@
 			<name>Image Hotspot</name>
 			<version>&packageVersion;</version>
 			<license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
-			<url>http://our.umbraco.org/projects/backoffice-extensions/image-hotspot</url>
+			<url>https://our.umbraco.com/projects/backoffice-extensions/image-hotspot</url>
 			<requirements>
 				<major>7</major>
 				<minor>0</minor>
@@ -26,7 +26,7 @@
 		</package>
 		<author>
 			<name>Chriztian Steinmeier</name>
-			<website>http://vokseverk.dk</website>
+			<website>https://vokseverk.dk</website>
 		</author>
 		<readme><include xmlns="http://www.w3.org/2001/XInclude" href="../README.md" parse="text" /></readme>
 	</info>
