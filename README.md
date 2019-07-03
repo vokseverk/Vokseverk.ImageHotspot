@@ -45,7 +45,7 @@ along with the image's path and width & height.
 
 - [ ] Get `imageSrc` from a mediapicker value of some sorts (e.g. recursively look for `umbracoFile` as the uComponents data type did)
 - [ ] Add configuration prevalue for the `width` used in the backoffice
-- [ ] Rename Theme config to Hotspot Color (or similar)
+- [x] Rename Theme config to Hotspot Color (or similar)
 - [x] Add configuration prevalue for `theme`
 - [x] Build script
 
