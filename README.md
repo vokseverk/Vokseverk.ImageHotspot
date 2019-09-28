@@ -32,12 +32,31 @@ Currently, it looks like this:
 
 ### Property Data
 
+The raw JSON data looks like this:
+
 <img src="screenshots/ImageHotspot_JSON.png" width="431" alt="JSON Data" />
 
 *JSON Data*
 
 The hotspot coordinate is saved both as exact pixel values and as percentage values,
 along with the image's path and width & height.
+
+There's a **PropertyConverter** you can grab and throw in your solution (or drop in the `App_Code` folder) here: [ImageHotspotPropertyConverter.cs](src/ImageHotspotPropertyConverter.cs),
+or you can download it from the release page.
+
+This enables ModelsBuilder to do its magic and provide you with an ImageHotspot object instead:
+
+```csharp
+public class ImageHotspot {
+	public string Image { get; set; }
+	public int Left { get; set; }
+	public int Top { get; set; }
+	public decimal PercentX { get; set; }
+	public decimal PercentY { get; set; }
+	public int Width { get; set; }
+	public int Height { get; set; }
+}
+```	
 
 ***
 

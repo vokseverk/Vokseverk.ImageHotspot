@@ -23,3 +23,6 @@ cp src/*.manifest package/
 
 # Build the ZIP file
 zip -j "dist/Vokseverk.$PACKAGE_NAME-$VERSION.zip" package/* -x \*.DS_Store
+
+# Copy the PropertyConverter file for manual distribution
+cp src/*.cs dist/
