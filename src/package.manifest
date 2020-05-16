@@ -12,7 +12,7 @@
 				{
 					label: "Image",
 					key: "imageSrc",
-					description: "Choose the image you want to place a hotspot on",
+					description: "The alias of the property (recursive lookup) that holds the image to place a hotspot on",
 					view: "imagepicker"
 				},
 				{
@@ -25,7 +25,8 @@
 		},
 		
 		defaultconfig: {
-			theme: 1
+			theme: 1,
+			imageSrc: "image"
 		}
 	}],
 	
