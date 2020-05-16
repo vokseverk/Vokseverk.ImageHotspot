@@ -1,8 +1,10 @@
 angular.module("umbraco").controller("ImageHotspotController", function ($scope, $element) {
 
 	var	$image = $('.imagehotspot-image img', $($element));
+	var imageSrc = $scope.getImageSrc($scope, $scope.model.config.imageSrc);
 	
 	$scope.image = {
+		src: imageSrc,
 		width: 400,
 		height: 0
 	};
@@ -59,6 +61,32 @@ angular.module("umbraco").controller("ImageHotspotController", function ($scope,
 		if ($scope.image.height === 0) {
 			$scope.image.height = $image.height();
 		}
+	}
+	
+	$scope.getImageSrc = function (context, propertyAlias) {
+		var imageSrc = ""
+		var maxRecurse = 200
+		var found = false
+		var aliasRE = new RegExp(`${propertyAlias}\$`)
+		while (!found && maxRecurse > 0) {
+			var ref = context.content || context.embeddedContentItem
+			if (ref != null) {
+				console.log("Found " + ref)
+				var props = ref.properties || ref.tabs[0].properties
+				if (props) {
+					var imageProperties = props.filter(prop => prop.alias.match(aliasRE))
+					if (imageProperties.length >= 1) {
+						imageSrc = imageProperties[0].value
+						found = true
+					}
+				}
+			}
+			maxRecurse -= 1
+		}
+		
+		console.log("End of while, got: " + imageSrc)
+		
+		return imageSrc;
 	}
 	
 	$scope.initDragging();
