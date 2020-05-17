@@ -22,6 +22,11 @@ Currently, it looks like this:
 
 *DataType Configuration*
 
+The property editor looks for the **Image** by looking up the alias recursively,
+so it's possible to use it on a doctype that's used by e.g.
+[Embedded Content Blocks](https://our.umbraco.com/packages/backoffice-extensions/embedded-content-blocks/)
+or another block builder.
+
 ***
 
 ### Property editor:
@@ -69,8 +74,8 @@ public class ImageHotspot {
 
 ## TODO
 
-- [x] Get `imageSrc` from a mediapicker value of some sorts (e.g. recursively look for `umbracoFile` as the uComponents data type did)
 - [ ] Add configuration prevalue for the `width` used in the backoffice
+- [x] Get `imageSrc` from a mediapicker value of some sorts (e.g. recursively look for `umbracoFile` as the uComponents data type did)
 - [x] Rename Theme config to Hotspot Color (or similar)
 - [x] Add configuration prevalue for `theme`
 - [x] Build script
