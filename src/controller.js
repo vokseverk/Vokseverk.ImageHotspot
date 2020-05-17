@@ -3,7 +3,7 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 	$scope.image = {
 		src: "",
 		width: 400,
-		height: 0
+		height: 200
 	};
 
 	$scope.setImageSrc = function(context, propertyAlias) {
@@ -20,24 +20,23 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 				if (props) {
 					var imageProperties = props.filter(function(prop) { return prop.alias.match(aliasRE) })
 					if (imageProperties.length >= 1) {
-						imageRef = imageProperties[0].value
-						found = true
+						imageRef = imageProperties[0].value;
+						found = true;
 					}
 				}
 			}
-			context = context.$parent
-			maxRecurse -= 1
+			context = context.$parent;
+			maxRecurse -= 1;
 		}
 		
 		if (imageRef != "") {
 			mediaResource.getById(imageRef).then(function(media) {
-				$scope.image.src = media.mediaLink
+				$scope.image.src = media.mediaLink;
 			})
 		}
 	}
 
 	var	$image = $('.imagehotspot-image img', $($element));
-	$scope.setImageSrc($scope, $scope.model.config.imageSrc);
 	
 	$scope.initDragging = function () {
 		$('.imagehotspot-hotspot', $($element)).draggable({
@@ -92,5 +91,6 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 		}
 	}
 	
+	$scope.setImageSrc($scope, $scope.model.config.imageSrc);
 	$scope.initDragging();
 });
