@@ -1,13 +1,43 @@
-angular.module("umbraco").controller("ImageHotspotController", function ($scope, $element) {
+angular.module("umbraco").controller("ImageHotspotController", function($scope, $element, mediaResource) {
 
-	var	$image = $('.imagehotspot-image img', $($element));
-	var imageSrc = $scope.getImageSrc($scope, $scope.model.config.imageSrc);
-	
 	$scope.image = {
-		src: imageSrc,
+		src: "",
 		width: 400,
 		height: 0
 	};
+
+	$scope.setImageSrc = function(context, propertyAlias) {
+		var imageRef = "";
+		var maxRecurse = 200;
+		var found = false;
+		var aliasRE = new RegExp(`${propertyAlias}\$`);
+		var ref;
+
+		while (!found && maxRecurse > 0) {
+			ref = context.content || context.embeddedContentItem
+			if (ref != null) {
+				var props = ref.properties || ref.tabs[0].properties
+				if (props) {
+					var imageProperties = props.filter(function(prop) { return prop.alias.match(aliasRE) })
+					if (imageProperties.length >= 1) {
+						imageRef = imageProperties[0].value
+						found = true
+					}
+				}
+			}
+			context = context.$parent
+			maxRecurse -= 1
+		}
+		
+		if (imageRef != "") {
+			mediaResource.getById(imageRef).then(function(media) {
+				$scope.image.src = media.mediaLink
+			})
+		}
+	}
+
+	var	$image = $('.imagehotspot-image img', $($element));
+	$scope.setImageSrc($scope, $scope.model.config.imageSrc);
 	
 	$scope.initDragging = function () {
 		$('.imagehotspot-hotspot', $($element)).draggable({
@@ -46,7 +76,6 @@ angular.module("umbraco").controller("ImageHotspotController", function ($scope,
 		var percentY = 100 * y / $scope.image.height;
 		
 		$scope.model.value = {
-			image: $scope.model.config.imageSrc, 
 			left: x,
 			top: y,
 			percentX: percentX,
@@ -61,32 +90,6 @@ angular.module("umbraco").controller("ImageHotspotController", function ($scope,
 		if ($scope.image.height === 0) {
 			$scope.image.height = $image.height();
 		}
-	}
-	
-	$scope.getImageSrc = function (context, propertyAlias) {
-		var imageSrc = ""
-		var maxRecurse = 200
-		var found = false
-		var aliasRE = new RegExp(`${propertyAlias}\$`)
-		while (!found && maxRecurse > 0) {
-			var ref = context.content || context.embeddedContentItem
-			if (ref != null) {
-				console.log("Found " + ref)
-				var props = ref.properties || ref.tabs[0].properties
-				if (props) {
-					var imageProperties = props.filter(prop => prop.alias.match(aliasRE))
-					if (imageProperties.length >= 1) {
-						imageSrc = imageProperties[0].value
-						found = true
-					}
-				}
-			}
-			maxRecurse -= 1
-		}
-		
-		console.log("End of while, got: " + imageSrc)
-		
-		return imageSrc;
 	}
 	
 	$scope.initDragging();
