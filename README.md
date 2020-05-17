@@ -23,9 +23,8 @@ Currently, it looks like this:
 *DataType Configuration*
 
 The property editor looks for the **Image** by looking up the alias recursively,
-so it's possible to use it on a doctype that's used by e.g.
-[Embedded Content Blocks](https://our.umbraco.com/packages/backoffice-extensions/embedded-content-blocks/)
-or another block builder.
+so it's possible to use it on a doctype that's used by e.g. **Nested Content**
+or something like [Embedded Content Blocks](https://our.umbraco.com/packages/backoffice-extensions/embedded-content-blocks/).
 
 ***
 
