@@ -1,12 +1,16 @@
 # Image Hotspot Property Editor for Umbraco 7
 
-This is an attempt to provide similar functionality to what was previously available with the [uComponents ImagePoint](http://ucomponents.github.io/data-types/image-point/)
+This is an attempt to provide similar functionality to what was previously
+available with the
+[uComponents ImagePoint](http://ucomponents.github.io/data-types/image-point/)
 data type in Umbraco, versions 4 and 6.
 
-This one's just called “Image Hotspot” because that's what our clients call it when they ask for this kind of thing :-)
+This one's just called “Image Hotspot” because that's what our clients call it
+when they ask for this kind of thing :-)
 
-_**PLEASE NOTE:** This may not at all be production ready for your particular use, but if you want to try it out there's
-an Umbraco package available on the releases page._
+_**PLEASE NOTE:** This may not at all be production ready for your particular
+use, but if you want to try it out there's an Umbraco package available on the
+releases page._
 
 ## What does it look like?
 
@@ -14,9 +18,13 @@ Currently, it looks like this:
 
 ### Configuration:
 
-<img src="screenshots/ImageHotspot_Config.png" width="467" alt="DataType Configuration" />
+<img src="screenshots/ImageHotspot_Config.jpg" width="467" alt="DataType Configuration" />
 
 *DataType Configuration*
+
+The property editor looks for the **Image** by looking up the alias recursively,
+so it's possible to use it on a doctype that's used by e.g. **Nested Content**
+or something like [Embedded Content Blocks](https://our.umbraco.com/packages/backoffice-extensions/embedded-content-blocks/).
 
 ***
 
@@ -38,13 +46,16 @@ The raw JSON data looks like this:
 
 *JSON Data*
 
-The hotspot coordinate is saved both as exact pixel values and as percentage values,
-along with the image's path and width & height.
+The hotspot coordinate is saved both as exact pixel values and as percentage
+values, along with the image's path and width & height.
 
-There's a **PropertyConverter** you can grab and throw in your solution (or drop in the `App_Code` folder) here: [ImageHotspotPropertyConverter.cs](src/ImageHotspotPropertyConverter.cs),
+There's a **PropertyConverter** you can grab and throw in your solution (or
+drop in the `App_Code` folder) here:
+[ImageHotspotPropertyConverter.cs](src/ImageHotspotPropertyConverter.cs),
 or you can download it from the release page.
 
-This enables ModelsBuilder to do its magic and provide you with an ImageHotspot object instead:
+This enables ModelsBuilder to do its magic and provide you with an ImageHotspot
+object instead:
 
 ```csharp
 public class ImageHotspot {
@@ -62,8 +73,8 @@ public class ImageHotspot {
 
 ## TODO
 
-- [ ] Get `imageSrc` from a mediapicker value of some sorts (e.g. recursively look for `umbracoFile` as the uComponents data type did)
 - [ ] Add configuration prevalue for the `width` used in the backoffice
+- [x] Get `imageSrc` from a mediapicker value of some sorts (e.g. recursively look for `umbracoFile` as the uComponents data type did)
 - [x] Rename Theme config to Hotspot Color (or similar)
 - [x] Add configuration prevalue for `theme`
 - [x] Build script

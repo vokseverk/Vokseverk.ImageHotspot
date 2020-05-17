@@ -1,11 +1,42 @@
-angular.module("umbraco").controller("ImageHotspotController", function ($scope, $element) {
+angular.module("umbraco").controller("ImageHotspotController", function($scope, $element, mediaResource) {
+
+	$scope.image = {
+		src: "",
+		width: 400,
+		height: 200
+	};
+
+	$scope.setImageSrc = function(context, propertyAlias) {
+		var imageRef = "";
+		var maxRecurse = 200;
+		var found = false;
+		var aliasRE = new RegExp(`${propertyAlias}\$`);
+		var ref;
+
+		while (!found && maxRecurse > 0) {
+			ref = context.content || context.embeddedContentItem
+			if (ref != null) {
+				var props = ref.properties || ref.tabs[0].properties
+				if (props) {
+					var imageProperties = props.filter(function(prop) { return prop.alias.match(aliasRE) })
+					if (imageProperties.length >= 1) {
+						imageRef = imageProperties[0].value;
+						found = true;
+					}
+				}
+			}
+			context = context.$parent;
+			maxRecurse -= 1;
+		}
+		
+		if (imageRef != "") {
+			mediaResource.getById(imageRef).then(function(media) {
+				$scope.image.src = media.mediaLink;
+			})
+		}
+	}
 
 	var	$image = $('.imagehotspot-image img', $($element));
-	
-	$scope.image = {
-		width: 400,
-		height: 0
-	};
 	
 	$scope.initDragging = function () {
 		$('.imagehotspot-hotspot', $($element)).draggable({
@@ -44,7 +75,7 @@ angular.module("umbraco").controller("ImageHotspotController", function ($scope,
 		var percentY = 100 * y / $scope.image.height;
 		
 		$scope.model.value = {
-			image: $scope.model.config.imageSrc, 
+			image: $scope.image.src,
 			left: x,
 			top: y,
 			percentX: percentX,
@@ -61,5 +92,6 @@ angular.module("umbraco").controller("ImageHotspotController", function ($scope,
 		}
 	}
 	
+	$scope.setImageSrc($scope, $scope.model.config.imageSrc);
 	$scope.initDragging();
 });

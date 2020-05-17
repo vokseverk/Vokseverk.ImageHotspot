@@ -1,6 +1,6 @@
 <div class="imagehotspot-editor theme{{ model.config.theme }}" ng-controller="ImageHotspotController">
 	<div class="imagehotspot-image" ng-click="positionHotspot($event)">
-		<img ng-src="{{ model.config.imageSrc }}?width={{ image.width }}" ng-srcset="{{ model.config.imageSrc }}?width={{ image.width * 2 }} 2x" width="{{ image.width }}" />
+		<img ng-if="image.src" ng-src="{{ image.src }}?width={{ image.width }}" ng-srcset="{{ image.src }}?width={{ image.width * 2 }} 2x" width="{{ image.width }}" height="{{ image.height }}" />
 		<div class="imagehotspot-hotspot" style="left:{{ model.value.left }}px;top:{{ model.value.top }}px;"></div>
 	</div>
 </div>
