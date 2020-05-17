@@ -75,6 +75,7 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 		var percentY = 100 * y / $scope.image.height;
 		
 		$scope.model.value = {
+			image: $scope.image.src,
 			left: x,
 			top: y,
 			percentX: percentX,
