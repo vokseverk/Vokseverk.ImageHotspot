@@ -13,7 +13,7 @@
 					label: "Image",
 					key: "imageSrc",
 					description: "The alias of the property (recursive lookup) that holds the image to place a hotspot on",
-					view: "imagepicker"
+					view: "textstring"
 				},
 				{
 					label: "Color",
