@@ -3,7 +3,7 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 	$scope.image = {
 		src: "",
 		width: 400,
-		height: 200
+		height: 0
 	};
 
 	$scope.setImageSrc = function(context, propertyAlias) {
