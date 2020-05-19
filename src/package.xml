@@ -7,7 +7,7 @@
 	<files>
 		<file ref="controller.js" />
 		<file ref="themeprevaluecontroller.js" />
-		<file ref="package.manifest" />
+		<file ref="package.manifest" versioned="no" />
 		<file ref="style.css" />
 		<file ref="theme.html" />
 		<file ref="editor.html" />

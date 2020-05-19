@@ -36,8 +36,18 @@
 		<file>
 			<guid><xsl:value-of select="@ref" /></guid>
 			<orgPath><xsl:value-of select="concat('/App_Plugins/Vokseverk.', translate($packageName, ' ', ''))" /></orgPath>
-			<orgName><xsl:value-of select="@ref" /></orgName>
+			<orgName>
+				<!-- (These are mutually exclusive) -->
+				<xsl:apply-templates select="@ref[not(../@versioned = 'no')]" mode="versioned" />
+				<xsl:value-of select="@ref[../@versioned = 'no']" />
+			</orgName>
 		</file>
+	</xsl:template>
+	
+	<xsl:template match="@*" mode="versioned">
+		<xsl:variable name="extension" select="substring-after(., '.')" />
+		<xsl:variable name="basename" select="substring-before(., '.')" />
+		<xsl:value-of select="concat($basename, '-&packageVersion;', '.', $extension)" />
 	</xsl:template>
 
 </xsl:stylesheet>
