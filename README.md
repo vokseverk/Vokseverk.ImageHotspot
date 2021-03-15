@@ -1,4 +1,6 @@
-# Image Hotspot Property Editor for Umbraco 7
+# Image Hotspot for Umbraco
+
+<img align="right" src="images/vv-imagehotspot-icon.png" width="180" height="180" alt="An image with a circular hotspot inside a square with the Vokseværk ‘fire-heart’ logo">
 
 This is an attempt to provide similar functionality to what was previously
 available with the
