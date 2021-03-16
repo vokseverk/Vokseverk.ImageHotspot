@@ -14,5 +14,5 @@
 
 <!ENTITY packageAuthorURL "https://vokseverk.dk/">
 <!ENTITY packageIconURL "TODO">
-<!ENTITY packageURL "TODO">
+<!ENTITY packageURL "https://our.umbraco.com/projects/backoffice-extensions/image-hotspot">
 <!ENTITY packageREADME "Allows an editor to place a hotspot on an image.">
