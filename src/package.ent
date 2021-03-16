@@ -1,0 +1,18 @@
+<!ENTITY packageVersion "0.5.3">
+
+<!ENTITY orgDisplayName "Vokseværk">
+<!ENTITY orgNamespace "Vokseverk">
+
+<!ENTITY propertyEditorName "Image Hotspot">
+<!ENTITY propertyEditorAlias "ImageHotspot">
+
+<!ENTITY packageName "&orgDisplayName; &propertyEditorName;">
+<!ENTITY packageAlias "&orgNamespace;.&propertyEditorAlias;">
+<!ENTITY packageAuthor "&orgDisplayName;">
+
+<!ENTITY fileBaseName "propeditor">
+
+<!ENTITY packageAuthorURL "https://vokseverk.dk/">
+<!ENTITY packageIconURL "TODO">
+<!ENTITY packageURL "TODO">
+<!ENTITY packageREADME "Allows an editor to place a hotspot on an image.">
