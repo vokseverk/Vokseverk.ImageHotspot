@@ -14,7 +14,7 @@ fi
 cp src/*.css dist/package/
 cp src/*.js dist/package/
 cp src/*.html dist/package/
-cp src/lang/*.xml dist/package/
+# cp src/lang/*.xml dist/package/
 
 # Copy the Value Converters to the dist/ folder
 cp src/*.cs dist/

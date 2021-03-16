@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE xsl:stylesheet [
-	<!ENTITY % version SYSTEM "../src/version.ent">
-	%version;
+	<!ENTITY % packageInfo SYSTEM "../src/package.ent">
+	%packageInfo;
 ]>
+<!--
+	This stylesheet transforms a `manifest.xml` file into the `package.manifest`.
+	Yes, this is XSLT building JSON so don't look if you're not into either :)
+	You're welcome to ask me anything about this though.
+-->
 <xsl:stylesheet
 	version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns:str="http://exslt.org/strings"
+	exclude-result-prefixes="str"
 >
 	<xsl:output method="text"
 		indent="yes"
 		omit-xml-declaration="yes"
 	/>
-
+	
+	<xsl:variable name="packageAlias" select="'&packageAlias;'" />
+	<xsl:variable name="version" select="'v&packageVersion;'" />
+	
 	<xsl:variable name="quot">&quot;</xsl:variable>
 	<xsl:variable name="objStart">{</xsl:variable>
 	<xsl:variable name="objEnd">}</xsl:variable>
@@ -81,7 +91,26 @@
 		<xsl:if test="not(position() = last())">, </xsl:if>
 	</xsl:template>
 	
-	<xsl:template match="*[@type = 'int']" mode="json" priority="-1">
+	<xsl:template match="*[. = 'true'] | *[. = 'false']" mode="json">
+		<xsl:value-of select="name()" />
+		<xsl:text>: </xsl:text>
+		<xsl:value-of select="." />
+		<xsl:if test="not(position() = last())">, </xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="*[not(text()) and not(*)]" mode="json">
+		<xsl:value-of select="name()" />
+		<xsl:text>: ""</xsl:text>
+		<xsl:if test="not(position() = last())">, </xsl:if>
+	</xsl:template>
+	
+	<xsl:template match="@*" mode="json" priority="-1">
+		<xsl:value-of select="name()" />
+		<xsl:text>: </xsl:text>
+		<xsl:apply-templates select="text()" mode="quoted" />
+	</xsl:template>
+	
+	<xsl:template match="*[@type = 'int'] | *[@type = 'bool']" mode="json" priority="-1">
 		<xsl:value-of select="name()" />
 		<xsl:text>: </xsl:text>
 		<xsl:value-of select="." />
@@ -107,10 +136,18 @@
 	</xsl:template>
 	
 	<xsl:template match="*" mode="versioned">
-		<xsl:variable name="pluginpath" select="concat('/App_Plugins/', /manifest/propertyEditor/alias, '/')" />
-		<xsl:variable name="extension" select="substring-after(., '.')" />
-		<xsl:variable name="basename" select="substring-before(., '.')" />
-		<xsl:value-of select="concat($pluginpath, $basename, '-&packageVersion;', '.', $extension)" />
+		<xsl:variable name="pluginpath" select="concat('~/App_Plugins/', $packageAlias, '/')" />
+		<xsl:variable name="parts" select="str:split(., '.')" />
+		<xsl:value-of select="$pluginpath" />
+		<xsl:for-each select="$parts">
+			<xsl:if test="not(position() = 1) and not(position() = last())">.</xsl:if>
+			<xsl:if test="not(position() = last())">
+				<xsl:value-of select="." />
+			</xsl:if>
+			<xsl:if test="position() = last()">
+				<xsl:value-of select="concat('-', $version, '.', .)" />
+			</xsl:if>
+		</xsl:for-each>
 	</xsl:template>
-	
+
 </xsl:stylesheet>
