@@ -42,7 +42,6 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 		$('.imagehotspot-hotspot', $($element)).draggable({
 			cursorAt: { left: 0, top: 0 },
 			drag: function (event, ui) {
-				$scope.assertImageDimensions();
 				ui.position.left = Math.max(0, ui.position.left);
 				ui.position.left = Math.min(ui.position.left, $scope.image.width);
 				ui.position.top = Math.max(0, ui.position.top);
@@ -87,7 +86,7 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 	
 	// This should not be called before the image has loaded
 	$scope.assertImageDimensions = function () {
-		if ($scope.image.height === 0) {
+		if (($scope.image.height === 0) && ($image.height() != null)) {
 			$scope.image.height = $image.height();
 		}
 	}

@@ -15,11 +15,13 @@ fi
 # Transform the package.xml file, pulling in the README
 xsltproc --novalid --xinclude --output package/package.xml lib/packager.xslt src/package.xml
 
-# Copy files into package
+# Transform then manifest.xml file
+xsltproc --novalid --xinclude --output package/package.manifest lib/manifester.xslt src/manifest.xml
+
+# Copy remaining files into package
 cp src/*.js package/
 cp src/*.css package/
 cp src/*.html package/
-cp src/*.manifest package/
 
 # Build the ZIP file
 zip -j "dist/Vokseverk.$PACKAGE_NAME-$VERSION.zip" package/* -x \*.DS_Store

@@ -3,7 +3,7 @@
 		alias: "Vokseverk.ImageHotspot",
 		name: "Image Hotspot",
 		editor: {
-			view: "~/App_Plugins/Vokseverk.ImageHotspot/editor.html",
+			view: "{$PLUGIN_PATH}/editor{$VERSION}.html",
 			valueType: "JSON"
 		},
 		
@@ -19,7 +19,7 @@
 					label: "Color",
 					key: "theme",
 					description: "Choose a color for the hotspot",
-					view: "~/App_Plugins/Vokseverk.ImageHotspot/theme.html"
+					view: "{$PLUGIN_PATH}/theme{$VERSION}.html"
 				}
 			]
 		},
@@ -30,10 +30,10 @@
 		}
 	}],
 	
-	css: ["~/App_Plugins/Vokseverk.ImageHotspot/style.css"],
+	css: ["{$PLUGIN_PATH}/style{$VERSION}.css"],
 	
 	javascript: [
-		"~/App_Plugins/Vokseverk.ImageHotspot/controller.js",
-		"~/App_Plugins/Vokseverk.ImageHotspot/themeprevaluecontroller.js"
+		"{$PLUGIN_PATH}/controller{$VERSION}.js",
+		"{$PLUGIN_PATH}/themeprevaluecontroller{$VERSION}.js"
 	]
 }

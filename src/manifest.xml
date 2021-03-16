@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+	<propertyEditor>
+		<alias>Vokseverk.ImageHotspot</alias>
+		<name>Image Hotspot</name>
+		<editor>
+			<view>editor.html</view>
+			<valueType>JSON</valueType>
+		</editor>
+		
+		<prevalues>
+			<field>
+				<label>Image</label>
+				<key>imageSrc</key>
+				<description>The alias of the property (recursive lookup) that holds the image to place a hotspot on</description>
+				<view>textstring</view>
+			</field>
+			<field>
+				<label>Color</label>
+				<key>theme</key>
+				<description>Choose a color for the hotspot</description>
+				<view>theme.html</view>
+			</field>
+		</prevalues>
+		
+		<defaultconfig>
+			<theme type="int">1</theme>
+			<imageSrc>image</imageSrc>
+		</defaultconfig>
+	</propertyEditor>
+	
+	<css>style.css</css>
+	
+	<javascript>controller.js</javascript>
+	<javascript>themeprevaluecontroller.js</javascript>
+		
+</manifest>
