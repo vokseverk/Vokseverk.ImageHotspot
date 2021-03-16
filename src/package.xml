@@ -1,34 +1,43 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE umbPackage [
-	<!ENTITY % version SYSTEM "version.ent">
-	%version;
+	<!ENTITY % packageInfo SYSTEM "package.ent">
+	%packageInfo;
 ]>
 <umbPackage>
 	<files>
-		<file ref="controller.js" />
-		<file ref="themeprevaluecontroller.js" />
+		<!-- The manifest file should not be versioned -->
 		<file ref="package.manifest" versioned="no" />
-		<file ref="style.css" />
+		
+		<!-- The main files -->
+		<file ref="&fileBaseName;.controller.js" />
+		<file ref="&fileBaseName;.styles.css" />
+		<file ref="&fileBaseName;.view.html" />
+		<file ref="themeprevaluecontroller.js" />
 		<file ref="theme.html" />
-		<file ref="editor.html" />
+		
+		<!-- Language files for translation -->
+		<!-- <language ref="da-DK.xml" />
+		<language ref="en-US.xml" />
+		<language ref="en-GB.xml" /> -->
 	</files>
 	<info>
 		<package>
-			<name>Image Hotspot</name>
+			<name>&packageName;</name>
 			<version>&packageVersion;</version>
-			<license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
-			<url>https://our.umbraco.com/projects/backoffice-extensions/image-hotspot</url>
-			<requirements>
+			<iconUrl>&packageIconURL;</iconUrl>
+			<license url="http://opensource.org/licenses/MIT">MIT License</license>
+			<url>&packageURL;</url>
+			<requirements type="strict">
 				<major>7</major>
 				<minor>0</minor>
 				<patch>0</patch>
 			</requirements>
 		</package>
 		<author>
-			<name>Chriztian Steinmeier</name>
-			<website>https://vokseverk.dk</website>
+			<name>&packageAuthor;</name>
+			<website>&packageAuthorURL;</website>
 		</author>
-		<readme><include xmlns="http://www.w3.org/2001/XInclude" href="README.txt" parse="text" /></readme>
+		<readme>&packageREADME;</readme>
 	</info>
 	<DocumentTypes />
 	<Templates />
@@ -37,6 +46,4 @@
 	<DictionaryItems />
 	<Languages />
 	<DataTypes />
-	<control />
-	<Actions />
 </umbPackage>
