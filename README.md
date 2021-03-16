@@ -20,7 +20,7 @@ Currently, it looks like this:
 
 ### Configuration:
 
-<img src="screenshots/ImageHotspot_Config.jpg" width="467" alt="DataType Configuration" />
+![Imagehotspot Config](images/imagehotspot-config.jpg "DataType Configuration")
 
 *DataType Configuration*
 
@@ -32,7 +32,7 @@ or something like [Embedded Content Blocks](https://our.umbraco.com/packages/bac
 
 ### Property editor:
 
-<img src="screenshots/ImageHotspot_Themes.png" width="640" alt="Property editor with variant themes" />
+![Imagehotspot Themes](images/imagehotspot-themes.png "Property editor with variant themes")
 
 *Property editor with variant colors*
 
@@ -44,7 +44,7 @@ or something like [Embedded Content Blocks](https://our.umbraco.com/packages/bac
 
 The raw JSON data looks like this:
 
-<img src="screenshots/ImageHotspot_JSON.png" width="431" alt="JSON Data" />
+![Imagehotspot Json](images/imagehotspot-json.png "JSON data")
 
 *JSON Data*
 
