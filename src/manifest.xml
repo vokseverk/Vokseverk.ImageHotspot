@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE umbPackage [
+	<!ENTITY % packageInfo SYSTEM "package.ent">
+	%packageInfo;
+]>
 <manifest>
 	<propertyEditor>
-		<alias>Vokseverk.ImageHotspot</alias>
-		<name>Image Hotspot</name>
+		<name>&propertyEditorName;</name>
+		<alias>&packageAlias;</alias>
+		<icon>icon-bulleted-list</icon>
+		<group>media</group><!-- common,lists,media,people,pickers,rich content -->
 		<editor>
-			<view>editor.html</view>
-			<valueType>JSON</valueType>
+			<valueType>JSON</valueType><!-- STRING,DATETIME,TEXT,INT,JSON -->
+			<view>&fileBaseName;.view.html</view>
 		</editor>
 		
 		<prevalues>
@@ -27,11 +33,11 @@
 			<theme type="int">1</theme>
 			<imageSrc>image</imageSrc>
 		</defaultconfig>
+		
 	</propertyEditor>
 	
-	<css>style.css</css>
-	
-	<javascript>controller.js</javascript>
+	<css>&fileBaseName;.styles.css</css>
+
+	<javascript>&fileBaseName;.controller.js</javascript>
 	<javascript>themeprevaluecontroller.js</javascript>
-		
 </manifest>
