@@ -15,7 +15,7 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 		while (!found && maxRecurse > 0) {
 			ref = context.content || context.embeddedContentItem
 			if (ref != null) {
-				var props = ref.properties || ref.tabs[0].properties
+				var props = ref.properties || (ref.tabs && ref.tabs[0] ? ref.tabs[0].properties : null)
 				if (props) {
 					var imageProperties = props.filter(function(prop) { return prop.alias.match(aliasRE) })
 					if (imageProperties.length >= 1) {
@@ -31,6 +31,19 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 		if (imageRef != "") {
 			mediaResource.getById(imageRef).then(function(media) {
 				$scope.image.src = media.mediaLink
+				
+				var editorWidth = $scope.image.width
+				var propsHolder = media.properties || (media.tabs && media.tabs[0] ? media.tabs[0].properties : null)
+				
+				if (propsHolder) {
+					var originalWidth = propsHolder.find(function (prop) { return prop.alias == 'umbracoWidth' })
+					var originalHeight = propsHolder.find(function(prop) { return prop.alias == 'umbracoHeight' })
+					if ((originalHeight && originalHeight.value > 0) && (originalWidth && originalWidth.value > 0)) {
+						var ratio = originalHeight.value / originalWidth.value
+						var editorHeight = Math.ceil(editorWidth * ratio)
+						$scope.image.height = editorHeight
+					}
+				}
 			})
 		}
 	}
