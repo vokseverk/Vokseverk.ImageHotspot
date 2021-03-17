@@ -1,5 +1,6 @@
 .imagehotspot-editor {
 	border: 1px solid #bbbabf;
+	display: inline-block;
 }
 
 .imagehotspot-image {
