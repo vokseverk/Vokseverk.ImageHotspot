@@ -22,6 +22,12 @@
 				<view>textstring</view>
 			</field>
 			<field>
+				<label>Width</label>
+				<key>width</key>
+				<description>Set the desired display width of the image (in pixels)</description>
+				<view>textstring</view>
+			</field>
+			<field>
 				<label>Color</label>
 				<key>theme</key>
 				<description>Choose a color for the hotspot</description>
@@ -30,8 +36,9 @@
 		</prevalues>
 		
 		<defaultconfig>
-			<theme type="int">1</theme>
+			<width type="int">400</width>
 			<imageSrc>image</imageSrc>
+			<theme type="int">1</theme>
 		</defaultconfig>
 		
 	</propertyEditor>
