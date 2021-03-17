@@ -7,7 +7,7 @@
 	<propertyEditor>
 		<name>&propertyEditorName;</name>
 		<alias>&packageAlias;</alias>
-		<icon>icon-bulleted-list</icon>
+		<icon>icon-locate</icon>
 		<group>media</group><!-- common,lists,media,people,pickers,rich content -->
 		<editor>
 			<valueType>JSON</valueType><!-- STRING,DATETIME,TEXT,INT,JSON -->
