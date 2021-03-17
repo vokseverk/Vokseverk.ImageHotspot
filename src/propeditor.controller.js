@@ -1,7 +1,7 @@
 angular.module("umbraco").controller("ImageHotspotController", function($scope, $element, mediaResource) {
 	$scope.image = {
 		src: "",
-		width: 400,
+		width: ($scope.model.config.width || 400),
 		height: 0
 	}
 	
