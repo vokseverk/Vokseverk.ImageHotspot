@@ -1,3 +1,7 @@
+.imagehotspot-editor {
+	border: 1px solid #bbbabf;
+}
+
 .imagehotspot-image {
 	position: relative;
 	display: inline-block;
