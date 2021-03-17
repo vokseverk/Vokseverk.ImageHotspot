@@ -16,6 +16,14 @@
 	cursor: move;
 }
 
+.imagehotspot-placeholder-image {
+	display: block;
+	width: 400px;
+	height: 300px;
+	border: 1px solid #999;
+	background: rgba(0, 0, 0, 0.1);
+}
+
 .theme1 .imagehotspot-hotspot { background: rgb(223, 59, 58); }
 .theme2 .imagehotspot-hotspot { background: rgb(100, 189, 99); }
 .theme3 .imagehotspot-hotspot { background: rgb(54, 180, 246); }
