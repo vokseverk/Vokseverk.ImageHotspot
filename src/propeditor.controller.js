@@ -1,26 +1,39 @@
-angular.module("umbraco").controller("ImageHotspotController", function($scope, $element, mediaResource) {
+angular.module("umbraco").controller("ImageHotspotController", function($scope, $element, mediaResource, editorState, contentResource, contentEditingHelper) {
+	
 	$scope.image = {
 		src: "",
 		width: ($scope.model.config.width || 400),
 		height: 0
 	}
 	
-	$scope.setImageSrc = function(context, propertyAlias) {
-		var imageRef = ""
-		var maxRecurse = 200
+	$scope.findImageReference = function(context, alias) {
 		var found = false
-		var aliasRE = new RegExp(`${propertyAlias}\$`)
+		var maxRecurse = 200
+		var aliasRE = new RegExp(`(?:^|_)${alias}\$`)
 		var ref
+		var imageReference
 		
-		while (!found && maxRecurse > 0) {
+		while (context != null && !found && maxRecurse > 0) {
 			ref = context.content || context.embeddedContentItem
-			if (ref != null) {
-				var props = ref.properties || (ref.tabs && ref.tabs[0] ? ref.tabs[0].properties : null)
+			if (ref) {
+				var props = ref.properties
+				var tabs = ref.tabs
+				var imageProperties
+				
 				if (props) {
-					var imageProperties = props.filter(function(prop) { return prop.alias.match(aliasRE) })
+					imageProperties = props.filter(function(prop) { return prop.alias.match(aliasRE) })
 					if (imageProperties.length >= 1) {
-						imageRef = imageProperties[0].value
+						imageReference = imageProperties[0].value
 						found = true
+					}
+				} else if (tabs) {
+					props = contentEditingHelper.getAllProps(ref)
+					if (props) {
+						imageProperties = props.filter(function(prop) { return prop.alias.match(aliasRE) })
+						if (imageProperties.length >= 1) {
+							imageReference = imageProperties[0].value
+							found = true
+						}
 					}
 				}
 			}
@@ -28,7 +41,39 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 			maxRecurse -= 1
 		}
 		
-		if (imageRef != "") {
+		if (found) {
+			return imageReference
+		} else {
+			var currentPage = editorState.getCurrent()
+			
+			if (currentPage.parentId) {
+				contentResource.getById(currentPage.parentId).then(function(doc){
+					if (doc.variants) {
+						doc.variants.forEach(function(variant) {
+							props = contentEditingHelper.getAllProps(variant)
+							if (props) {
+								imageProperties = props.filter(function(prop) { return prop.alias.match(aliasRE) })
+								if (imageProperties.length >= 1) {
+									imageReference = imageProperties[0].value
+									console.log(`Found ${imageReference}`)
+									found = true
+									$scope.updateImageSrc(imageReference)
+								}
+							}
+						})
+					}
+				})
+			}
+		}
+	}
+	
+	$scope.setImageSrc = function(context, propertyAlias) {
+		var imageRef = $scope.findImageReference(context, propertyAlias)
+		$scope.updateImageSrc(imageRef)
+	}
+
+	$scope.updateImageSrc = function(imageRef) {
+		if (imageRef) {
 			mediaResource.getById(imageRef).then(function(media) {
 				$scope.image.src = media.mediaLink
 				
@@ -45,6 +90,8 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 					}
 				}
 			})
+		} else {
+			console.log("Couldn't find the image property")
 		}
 	}
 
