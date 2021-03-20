@@ -55,7 +55,6 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 								imageProperties = props.filter(function(prop) { return prop.alias.match(aliasRE) })
 								if (imageProperties.length >= 1) {
 									imageReference = imageProperties[0].value
-									console.log(`Found ${imageReference}`)
 									found = true
 									$scope.updateImageSrc(imageReference)
 								}
@@ -91,7 +90,7 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 				}
 			})
 		} else {
-			console.log("Couldn't find the image property")
+			// Couldn't find the image property
 		}
 	}
 
