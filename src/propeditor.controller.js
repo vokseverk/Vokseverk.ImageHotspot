@@ -46,7 +46,7 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 		} else {
 			var currentPage = editorState.getCurrent()
 			
-			if (currentPage.parentId) {
+			if (currentPage && currentPage.parentId > 0) {
 				contentResource.getById(currentPage.parentId).then(function(doc){
 					if (doc.variants) {
 						doc.variants.forEach(function(variant) {
