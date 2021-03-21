@@ -2,13 +2,9 @@
 
 <img align="right" src="images/vv-imagehotspot-icon.png" width="180" height="180" alt="A rectangle with a circular hotspot inside a square with the Vokseværk ‘fire-heart’ logo">
 
-This property editor provides similar functionality to what was previously
-available with the
-[uComponents ImagePoint](http://ucomponents.github.io/data-types/image-point/)
-data type in Umbraco, versions 4 and 6.
+This property editor provides similar functionality to what was previously available with the [uComponents ImagePoint](http://ucomponents.github.io/data-types/image-point/) data type in Umbraco, versions 4 and 6.
 
-(This one's just called “Image Hotspot” because that's what our clients call it
-when they ask for this kind of thing 😁)
+(This one's just called “Image Hotspot” because that's what our clients call it when they ask for this kind of thing 😁)
 
 It's a property editor that displays an image and lets the editor place a hotspot on it.
 
