@@ -44,12 +44,20 @@ or something like [Embedded Content Blocks](https://our.umbraco.com/packages/bac
 
 The raw JSON data looks like this:
 
-![Imagehotspot Json](images/imagehotspot-json.png "JSON data")
-
-*JSON Data*
+```json
+{
+	"image": "/media/1492/what-a-nice-picture.jpg",
+	"left": 223,
+	"top": 307,
+	"percentX": 55.75,
+	"percentY": 74.878048780487804878,
+	"width": 400,
+	"height": 410
+}
+```
 
 The hotspot coordinate is saved both as exact pixel values and as percentage
-values, along with the image's path and width & height.
+values, along with the image's path, width & height.
 
 There's a **PropertyConverter** you can grab and throw in your solution (or
 drop in the `App_Code` folder) here:
