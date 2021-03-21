@@ -9,7 +9,7 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 	$scope.findImageReference = function(context, alias) {
 		var found = false
 		var maxRecurse = 200
-		var aliasRE = new RegExp(`(?:^|_)${alias}\$`)
+		var aliasRE = new RegExp(`(?:^|_|-)${alias}\$`)
 		var ref
 		var imageReference
 		
