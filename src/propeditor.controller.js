@@ -1,4 +1,4 @@
-angular.module("umbraco").controller("ImageHotspotController", function($scope, $element, mediaResource, editorState, contentResource, contentEditingHelper) {
+angular.module("umbraco").controller("ImageHotspotController", function($scope, $element, mediaResource, angularHelper, editorState, contentResource, contentEditingHelper) {
 	
 	$scope.image = {
 		src: "",
@@ -140,6 +140,9 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 			width: $scope.image.width,
 			height: $scope.image.height
 		}
+		
+		var currentForm = angularHelper.getCurrentForm($scope)
+		currentForm.$setDirty()
 	}
 	
 	// This should not be called before the image has loaded
