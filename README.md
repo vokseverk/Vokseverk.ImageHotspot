@@ -2,21 +2,27 @@
 
 <img align="right" src="images/vv-imagehotspot-icon.png" width="180" height="180" alt="A rectangle with a circular hotspot inside a square with the Vokseværk ‘fire-heart’ logo">
 
-This is an attempt to provide similar functionality to what was previously
+This property editor provides similar functionality to what was previously
 available with the
 [uComponents ImagePoint](http://ucomponents.github.io/data-types/image-point/)
 data type in Umbraco, versions 4 and 6.
 
-This one's just called “Image Hotspot” because that's what our clients call it
-when they ask for this kind of thing :-)
+(This one's just called “Image Hotspot” because that's what our clients call it
+when they ask for this kind of thing 😁)
 
-_**PLEASE NOTE:** This may not at all be production ready for your particular
-use, but if you want to try it out there's an Umbraco package available on the
-releases page._
+It's a property editor that displays an image and lets the editor place a hotspot on it.
 
-## What does it look like?
+## Screenshots
 
-Currently, it looks like this:
+### Property editor:
+
+![Imagehotspot Editor](images/imagehotspot-editor.jpg "Property editor with insets of the alternate color themes")
+
+*Property editor with insets showing the alternate colors*
+
+***
+
+The configuration looks like this:
 
 ### Configuration:
 
@@ -25,18 +31,7 @@ Currently, it looks like this:
 *DataType Configuration*
 
 The property editor looks for the **Image** by looking up the alias recursively,
-so it's possible to use it on a doctype that's used by e.g. **Nested Content**
-or something like [Embedded Content Blocks](https://our.umbraco.com/packages/backoffice-extensions/embedded-content-blocks/).
-
-***
-
-### Property editor:
-
-![Imagehotspot Themes](images/imagehotspot-themes.png "Property editor with variant themes")
-
-*Property editor with variant colors*
-
-("Color" defines the color of the Hotspot - all colors shown above)
+so it's possible to use it on a doctype that's used by e.g. **Nested Content**, **Block List** or something like [Embedded Content Blocks](https://our.umbraco.com/packages/backoffice-extensions/embedded-content-blocks/).
 
 ***
 
@@ -59,13 +54,11 @@ The raw JSON data looks like this:
 The hotspot coordinate is saved both as exact pixel values and as percentage
 values, along with the image's path, width & height.
 
-There's a **PropertyConverter** you can grab and throw in your solution (or
-drop in the `App_Code` folder) here:
-[ImageHotspotPropertyConverter.cs](src/ImageHotspotPropertyConverter.cs),
-or you can download it from the release page.
+The [releases page][RELS] has **PropertyConverters** for v7 and v8, that you can grab and throw in your solution (or drop in the `App_Code` folder.
 
-This enables ModelsBuilder to do its magic and provide you with an ImageHotspot
-object instead:
+[RELS]: https://github.com/vokseverk/Vokseverk.ImageHotspot/releases
+
+This enables ModelsBuilder to do its magic and provide you with an `ImageHotspot` object instead:
 
 ```csharp
 public class ImageHotspot {
@@ -78,9 +71,3 @@ public class ImageHotspot {
 	public int Height { get; set; }
 }
 ```	
-
-***
-
-## Credits
-
-* LEGO image from [Louieland](http://reserve.louie.land/Wallpapers/LEGO/ "Index of /Wallpapers/LEGO")
