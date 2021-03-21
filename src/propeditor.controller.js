@@ -6,6 +6,11 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 		height: 0
 	}
 	
+	if ($scope.model.value !== null && $scope.model.value !== "") {
+		$scope.image.src = $scope.model.value.image
+		$scope.image.height = $scope.model.height
+	}
+	
 	$scope.findImageReference = function(context, alias) {
 		var found = false
 		var maxRecurse = 200
