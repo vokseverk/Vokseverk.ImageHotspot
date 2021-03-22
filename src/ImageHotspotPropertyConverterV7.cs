@@ -15,6 +15,10 @@ namespace Vokseverk {
 		public int Width { get; set; }
 		public int Height { get; set; }
 		public string Image { get; set; }
+		
+		public override string ToString() {
+			return "left: " + PercentX + "%; top: " + PercentY + "%;";
+		}
 	}
 	
 	[PropertyValueType(typeof(ImageHotspot))]

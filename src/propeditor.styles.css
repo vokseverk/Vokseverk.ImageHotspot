@@ -1,3 +1,9 @@
+.imagehotspot-editor {
+	border: 1px solid #bbbabf;
+	display: inline-block;
+	line-height: 0;
+}
+
 .imagehotspot-image {
 	position: relative;
 	display: inline-block;
@@ -14,6 +20,14 @@
 	opacity: 0.8;
 	transform: translate(-50%, -50%);
 	cursor: move;
+}
+
+.imagehotspot-placeholder-image {
+	display: block;
+	width: 400px;
+	height: 300px;
+	border: 1px solid #999;
+	background: rgba(0, 0, 0, 0.1);
 }
 
 .theme1 .imagehotspot-hotspot { background: rgb(223, 59, 58); }

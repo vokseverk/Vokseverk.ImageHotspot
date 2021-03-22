@@ -1,28 +1,30 @@
-PACKAGE_NAME=ImageHotspot
-
-# Get the current version
-VERSION=`grep -o ' packageVersion \"\(.*\)\"' src/version.ent | awk '{print $2}' | sed 's/"//g'`
+VERSION=`grep -o ' packageVersion \"\(.*\)\"' src/package.ent | awk '{print $2}' | sed 's/"//g'`
+NAMESPACE=`grep -o ' orgNamespace \"\(.*\)\"' src/package.ent | awk '{print $2}' | sed 's/"//g'`
+PACKAGE=`grep -o ' propertyEditorAlias \"\(.*\)\"' src/package.ent | awk '{print $2}' | sed 's/"//g'`
+PKG_NAME="${NAMESPACE}.${PACKAGE}"
 
 # Create the dist directory if needed
 if [[ ! -d dist ]]
-	then mkdir dist
-fi
-# Likewise, create the package dir
-if [[ ! -d package ]]
-	then mkdir package
+	then mkdir -p dist/package
+else
+	rm dist/package/*.*
 fi
 
-# Transform the package.xml file, pulling in the README
-xsltproc --novalid --xinclude --output package/package.xml lib/packager.xslt src/package.xml
+# Copy files
+cp src/*.css dist/package/
+cp src/*.js dist/package/
+cp src/*.html dist/package/
+# cp src/lang/*.xml dist/package/
 
-# Copy files into package
-cp src/*.js package/
-cp src/*.css package/
-cp src/*.html package/
-cp src/*.manifest package/
+# Copy the Value Converters to the dist/ folder
+cp src/*.cs dist/
+
+# Transform the package.xml file
+xsltproc --novalid --xinclude --output dist/package/package.xml lib/packager.xslt src/package.xml
+
+# Transform the manifest.xml file
+xsltproc --novalid --xinclude --output dist/package/package.manifest lib/manifester.xslt src/manifest.xml
+
 
 # Build the ZIP file
-zip -j "dist/Vokseverk.$PACKAGE_NAME-$VERSION.zip" package/* -x \*.DS_Store
-
-# Copy the PropertyConverter file for manual distribution
-cp src/*.cs dist/
+zip -j "dist/${PKG_NAME}-${VERSION}.zip" dist/package/* -x \*.DS_Store
