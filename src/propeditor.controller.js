@@ -52,23 +52,34 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 			var currentPage = editorState.getCurrent()
 			
 			if (currentPage && currentPage.parentId > 0) {
-				contentResource.getById(currentPage.parentId).then(function(doc){
-					if (doc.variants) {
-						doc.variants.forEach(function(variant) {
-							props = contentEditingHelper.getAllProps(variant)
-							if (props) {
-								imageProperties = props.filter(function(prop) { return prop.alias.match(aliasRE) })
-								if (imageProperties.length >= 1) {
-									imageReference = imageProperties[0].value
-									found = true
-									$scope.updateImageSrc(imageReference)
-								}
-							}
-						})
-					}
+				var ancestors = currentPage.path.split(',').reverse().splice(1)
+				contentResource.getByIds(ancestors).then(function(nodes) {
+					nodes.forEach(function(doc) {
+						if (doc.id > 0) {
+							found = $scope.findReferenceOnNode(doc, aliasRE)
+						}
+					})
 				})
 			}
 		}
+	}
+	
+	$scope.findReferenceOnNode = function(doc, aliasRE) {
+		var foundReference = false
+		if (doc.variants) {
+			doc.variants.forEach(function(variant) {
+				var props = contentEditingHelper.getAllProps(variant)
+				if (props) {
+					imageProperties = props.filter(function(prop) { return prop.alias.match(aliasRE) })
+					if (imageProperties.length >= 1) {
+						var imageReference = imageProperties[0].value
+						foundReference = true
+						$scope.updateImageSrc(imageReference)
+					}
+				}
+			})
+		}
+		return foundReference
 	}
 	
 	$scope.setImageSrc = function(context, propertyAlias) {
