@@ -1,0 +1,51 @@
+{
+	"propertyEditors": [
+		{
+			"alias": "ImageHotspot",
+			"name": "Image Hotspot",
+			"icon": "icon-locate",
+			"group": "media",
+			"editor": {
+				"view": "~/App_Plugins/Vokseverk.ImageHotspot/views/propeditor.view.html"
+			},
+			"prevalues": {
+				"fields": [
+					{
+						"description": "The alias of the property (recursive lookup) that holds the image to place a hotspot on",
+						"key": "imageSrc",
+						"label": "Image",
+						"view": "textstring"
+					},
+					{
+						"description": "Set the desired display width of the image (in pixels)",
+						"key": "width",
+						"label": "Width",
+						"view": "textstring"
+					},
+					{
+						"description": "Choose a color for the hotspot",
+						"key": "theme",
+						"label": "Color",
+						"view": "~/App_Plugins/Vokseverk.ImageHotspot/views/theme.html"
+					}
+				]
+			},
+			"defaultConfig": {
+				"fields": [
+					{
+						"width": 400,
+						"imageSrc": "image",
+						"theme": 1
+					}
+				]
+			}
+		}
+	],
+	"javascript": [
+		"~/App_Plugins/Vokseverk.ImageHotspot/js/propeditor.controller.js",
+		"~/App_Plugins/Vokseverk.ImageHotspot/js/themeprevaluecontroller.js"
+	],
+	"css": [
+		"~/App_Plugins/Vokseverk.ImageHotspot/css/propeditor.styles.css"
+	]
+}

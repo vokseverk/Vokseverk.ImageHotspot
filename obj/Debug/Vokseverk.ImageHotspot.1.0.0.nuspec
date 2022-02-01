@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Vokseverk.ImageHotspot</id>
+    <version>1.0.0</version>
+    <title>Vokseverk.ImageHotspot</title>
+    <authors>Vokseværk</authors>
+    <projectUrl>https://our.umbraco.com/packages/backoffice-extensions/image-hotspot/</projectUrl>
+    <description>...</description>
+    <releaseNotes>Packaging for Umbraco 9</releaseNotes>
+    <tags>umbraco plugin package</tags>
+    <repository url="https://raw.githubusercontent.com/vokseverk/Vokseverk.ImageHotspot/" />
+    <dependencies>
+      <group targetFramework="net5.0">
+        <dependency id="Umbraco.Cms.Web.BackOffice" version="9.3.0-rc" exclude="Build,Analyzers" />
+        <dependency id="Umbraco.Cms.Web.Website" version="9.3.0-rc" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Dev\Personal\Vokseverk.ImageHotspot\bin\Debug\net5.0\Vokseverk.ImageHotspot.dll" target="lib\net5.0\Vokseverk.ImageHotspot.dll" />
+    <file src="C:\Dev\Personal\Vokseverk.ImageHotspot\App_Plugins\Vokseverk.ImageHotspot\css\propeditor.styles.css" target=".\App_Plugins\Vokseverk.ImageHotspot\css\propeditor.styles.css" />
+    <file src="C:\Dev\Personal\Vokseverk.ImageHotspot\App_Plugins\Vokseverk.ImageHotspot\js\propeditor.controller.js" target=".\App_Plugins\Vokseverk.ImageHotspot\js\propeditor.controller.js" />
+    <file src="C:\Dev\Personal\Vokseverk.ImageHotspot\App_Plugins\Vokseverk.ImageHotspot\js\themeprevaluecontroller.js" target=".\App_Plugins\Vokseverk.ImageHotspot\js\themeprevaluecontroller.js" />
+    <file src="C:\Dev\Personal\Vokseverk.ImageHotspot\App_Plugins\Vokseverk.ImageHotspot\package.manifest" target=".\App_Plugins\Vokseverk.ImageHotspot\package.manifest" />
+    <file src="C:\Dev\Personal\Vokseverk.ImageHotspot\App_Plugins\Vokseverk.ImageHotspot\views\propeditor.view.html" target=".\App_Plugins\Vokseverk.ImageHotspot\views\propeditor.view.html" />
+    <file src="C:\Dev\Personal\Vokseverk.ImageHotspot\App_Plugins\Vokseverk.ImageHotspot\views\theme.html" target=".\App_Plugins\Vokseverk.ImageHotspot\views\theme.html" />
+    <file src="C:\Dev\Personal\Vokseverk.ImageHotspot\build\Vokseverk.ImageHotspot.targets" target="buildTransitive\Vokseverk.ImageHotspot.targets" />
+  </files>
+</package>
