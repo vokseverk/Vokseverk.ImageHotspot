@@ -1,0 +1,27 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <PropertyGroup>
+        <VokseverkImageHotspotContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\Vokseverk.ImageHotspot\**\*.*</VokseverkImageHotspotContentFilesPath>
+    </PropertyGroup>
+
+    <Target Name="CopyVokseverkImageHotspotAssets" BeforeTargets="Build">
+        <ItemGroup>
+            <VokseverkImageHotspotContentFiles Include="$(VokseverkImageHotspotContentFilesPath)" />
+        </ItemGroup>
+        <Message Text="Copying Vokseverk.ImageHotspot files: $(VokseverkImageHotspotContentFilesPath) - #@(VokseverkImageHotspotContentFiles->Count()) files"  Importance="high" />
+        <Copy
+            SourceFiles="@(VokseverkImageHotspotContentFiles)"
+            DestinationFiles="@(VokseverkImageHotspotContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\Vokseverk.ImageHotspot\%(RecursiveDir)%(Filename)%(Extension)')"
+            SkipUnchangedFiles="true" />
+
+    </Target>
+
+    <Target Name="ClearVokseverkImageHotspotAssets" BeforeTargets="Clean">
+        <ItemGroup>
+            <VokseverkImageHotspotDir Include="$(MSBuildProjectDirectory)\App_Plugins\Vokseverk.ImageHotspot\" />
+        </ItemGroup>
+        <Message Text="Clear old Vokseverk.ImageHotspot data"  Importance="high" />
+        <RemoveDir Directories="@(VokseverkImageHotspotDir)"  />
+    </Target>
+
+</Project>
