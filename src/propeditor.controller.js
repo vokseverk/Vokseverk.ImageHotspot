@@ -7,8 +7,10 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 	}
 	
 	if ($scope.model.value !== null && $scope.model.value !== "") {
-		$scope.image.src = $scope.model.value.image
-		$scope.image.height = $scope.model.height
+		if ($scope.model.value.image !== null) {
+			$scope.image.src = $scope.model.value.image
+			$scope.image.height = $scope.model.height
+		}
 	}
 	
 	$scope.findImageReference = function(context, alias) {
