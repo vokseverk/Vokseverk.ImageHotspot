@@ -8,7 +8,7 @@
 	"Category": "Editor Tools",
 	"Screenshots": [
 		{
-			"ImageUrl": "https://raw.githubusercontent.com/vokseverk/Vokseverk.ImageHotspot/main/images/imagehotspot-editor.jpg",
+			"ImageUrl": "https://raw.githubusercontent.com/vokseverk/Vokseverk.ImageHotspot/master/images/imagehotspot-editor.jpg",
 			"Caption": "Property editor with insets of the alternate color themes"
 		}
 	],
