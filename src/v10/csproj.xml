@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE Project [
+	<!ENTITY % packageInfo SYSTEM "../package.ent">
+	%packageInfo;
+]>
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Product>&packageAlias;</Product>
+		<PackageId>&packageAlias;</PackageId>
+		<Title>&packageName;</Title>
+		<Description>&packageDESC;</Description>
+		<PackageTags>&packageTags;</PackageTags>
+		<Version>&packageVersionV10;</Version>
+		<Company>&packageAuthor;</Company>
+		<Authors>&packageAuthor;</Authors>
+		<Copyright>2020 © &packageAuthor;</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>&packageRepoURL;</PackageProjectUrl>
+		<RepositoryUrl>&packageRepoURL;</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageIcon>&packageIconFile;</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Umbraco.Cms.Core" Version="10.0.0" />
+		<PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="10.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="App_Plugins\&packageAlias;\**" ExcludeFromSingleFile="true" CopyToPublishDirectory="Always" />
+		<None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+		<None Include="&packageIconFile;" Pack="true" PackagePath="\" />
+		<None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+</Project>

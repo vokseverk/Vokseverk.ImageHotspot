@@ -27,7 +27,7 @@ The configuration looks like this:
 *DataType Configuration*
 
 The property editor looks for the **Image** by looking up the alias recursively,
-so it's possible to use it on a doctype that's used by e.g. **Nested Content**, **Block List** or something like [Embedded Content Blocks](https://our.umbraco.com/packages/backoffice-extensions/embedded-content-blocks/).
+so it's possible to use it on a doctype that's used by **Nested Content** or **Block List**.
 
 ***
 
@@ -50,11 +50,8 @@ The raw JSON data looks like this:
 The hotspot coordinate is saved both as exact pixel values and as percentage
 values, along with the image's path, width & height.
 
-The [releases page][RELS] has **PropertyConverters** for v7 and v8, that you can grab and throw in your solution (or drop in the `App_Code` folder.
-
-[RELS]: https://github.com/vokseverk/Vokseverk.ImageHotspot/releases
-
-This enables ModelsBuilder to do its magic and provide you with an `ImageHotspot` object instead:
+The included **PropertyConverter** enables ModelsBuilder to do its magic and provide you with
+an `ImageHotspot` object instead of the JSON data:
 
 ```csharp
 public class ImageHotspot {
@@ -66,4 +63,25 @@ public class ImageHotspot {
 	public int Width { get; set; }
 	public int Height { get; set; }
 }
-```	
+```
+
+The `.ToString()` method has been crafted to be used inside a style attribute, to give you the
+hotspot's position in one go - something like `left: 10.3%; top: 24.3333%`, e.g.:
+
+```razor
+var marker = Model.Hotspot;
+
+<div style="position:relative; display:inline-flex;">
+	<img src="@(marker.Image)" width="@(marker.Width)" height="@(marker.Height)">
+	<span
+		style="
+			position:absolute;
+			background:#f80c;
+			transform:translate(-50%,-50%);
+			border-radius:5px;
+			width:10px;
+			height:10px;
+			@(marker)
+		"></span>
+</div>
+```
