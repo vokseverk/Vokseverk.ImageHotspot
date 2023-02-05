@@ -1,18 +1,29 @@
-<!ENTITY packageVersion "1.0.0">
+<!ENTITY packageVersion "1.1.9">
+<!ENTITY packageVersionV9 "2.0.0">
+<!ENTITY packageVersionV10 "3.0.1">
+<!ENTITY packageVersionV11 "4.0.0">
+
+<!ENTITY packageNamespace "Vokseverk">
+<!ENTITY packageSafeName "ImageHotspot">
+<!ENTITY packageName "Vokseværk ImageHotspot">
+<!ENTITY packageAlias "Vokseverk.ImageHotspot"><!-- Don't build this from entities! -->
+<!ENTITY packageAuthor "Vokseværk">
 
 <!ENTITY orgDisplayName "Vokseværk">
 <!ENTITY orgNamespace "Vokseverk">
 
+<!ENTITY packageAuthorURL "https://vokseverk.dk/">
+<!ENTITY packageIconFile "vv-imagehotspot-icon.png">
+<!ENTITY packageRepoURL "https://github.com/vokseverk/Vokseverk.ImageHotspot">
+<!ENTITY packageURL "https://github.com/vokseverk/Vokseverk.ImageHotspot">
+<!ENTITY packageTags "umbraco image hotspot umbraco-marketplace">
+<!ENTITY packageDESC "An Umbraco property editor that allows an editor to place a hotspot on an image.">
+
 <!ENTITY propertyEditorName "Image Hotspot">
 <!ENTITY propertyEditorAlias "ImageHotspot">
 
-<!ENTITY packageName "&orgDisplayName; &propertyEditorName;">
-<!ENTITY packageAlias "&orgNamespace;.&propertyEditorAlias;">
-<!ENTITY packageAuthor "&orgDisplayName;">
 
 <!ENTITY fileBaseName "propeditor">
 
-<!ENTITY packageAuthorURL "https://vokseverk.dk/">
 <!ENTITY packageIconURL "https://raw.githubusercontent.com/vokseverk/Vokseverk.ImageHotspot/master/images/vv-imagehotspot-icon.png">
-<!ENTITY packageURL "https://our.umbraco.com/packages/backoffice-extensions/image-hotspot/">
 <!ENTITY packageREADME "Allows an editor to place a hotspot on an image.">

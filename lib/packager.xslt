@@ -13,6 +13,7 @@
 	version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:str="http://exslt.org/strings"
+	xmlns:msbuild="http://schemas.microsoft.com/developer/msbuild/2003"
 	exclude-result-prefixes="str"
 >
 
@@ -22,7 +23,7 @@
 		cdata-section-elements="Design readme"
 	/>
 
-	<xsl:variable name="packageAlias" select="'&packageAlias;'" />
+	<xsl:variable name="packageAlias" select="'&packageNamespace;&packageSafeName;'" />
 	<xsl:variable name="folderPrefix" select="/umbPackage/files/@folderPrefix" />
 	<xsl:variable name="version" select="'v&packageVersion;'" />
 
@@ -30,17 +31,17 @@
 	<xsl:template match="/">
 		<xsl:apply-templates select="* | text() | processing-instruction()" />
 	</xsl:template>
-		
+
 	<xsl:template match="* | text()">
 		<xsl:copy>
 			<xsl:copy-of select="@*" />
 			<xsl:apply-templates select="* | text() | processing-instruction()" />
 		</xsl:copy>
 	</xsl:template>
-	
+
 	<!-- No output for these -->
 	<xsl:template match="comment() | processing-instruction()" />
-	
+
 	<!-- The `<files>` element has a `@folderPrefix` attribute we don't want to copy -->
 	<xsl:template match="files">
 		<files>
@@ -55,7 +56,7 @@
 			<orgName><xsl:value-of select="@name" /></orgName>
 		</file>
 	</xsl:template>
-	
+
 	<xsl:template match="file[@ref]">
 		<file>
 			<guid><xsl:value-of select="@ref" /></guid>
@@ -79,7 +80,7 @@
 			<orgName><xsl:value-of select="@ref" /></orgName>
 		</file>
 	</xsl:template>
-	
+
 	<xsl:template match="@ref" mode="versioned">
 		<xsl:variable name="parts" select="str:split(., '.')" />
 		<xsl:for-each select="$parts">
@@ -91,6 +92,28 @@
 				<xsl:value-of select="concat('-', $version, '.', .)" />
 			</xsl:if>
 		</xsl:for-each>
+	</xsl:template>
+
+	<!-- Nuget specific for creating the .targets file -->
+	<xsl:template match="msbuild:PackageAliasContentFiles">
+		<xsl:element name="&packageNamespace;&packageSafeName;ContentFiles" namespace="http://schemas.microsoft.com/developer/msbuild/2003">
+			<xsl:copy-of select="@*" />
+			<xsl:apply-templates select="* | text()" />
+		</xsl:element>
+	</xsl:template>
+
+	<xsl:template match="msbuild:PackageAliasContentFilesPath">
+		<xsl:element name="&packageNamespace;&packageSafeName;ContentFilesPath" namespace="http://schemas.microsoft.com/developer/msbuild/2003">
+			<xsl:copy-of select="@*" />
+			<xsl:apply-templates select="* | text()" />
+		</xsl:element>
+	</xsl:template>
+
+	<xsl:template match="msbuild:PackageAliasContentFilesDir">
+		<xsl:element name="&packageNamespace;&packageSafeName;ContentFilesDir" namespace="http://schemas.microsoft.com/developer/msbuild/2003">
+			<xsl:copy-of select="@*" />
+			<xsl:apply-templates select="* | text()" />
+		</xsl:element>
 	</xsl:template>
 
 </xsl:stylesheet>
