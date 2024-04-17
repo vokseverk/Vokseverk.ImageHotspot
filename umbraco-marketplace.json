@@ -6,6 +6,8 @@
 		"Url": "https://greystate.dk/who/"
 	},
 	"Category": "Editor Tools",
+	"LicenseTypes": [ "Free" ],
+	"PackageType": "Package",
 	"Screenshots": [
 		{
 			"ImageUrl": "https://raw.githubusercontent.com/vokseverk/Vokseverk.ImageHotspot/master/images/imagehotspot-editor.jpg",
