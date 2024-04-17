@@ -181,13 +181,16 @@ angular.module("umbraco").controller("ImageHotspotController", function($scope, 
 	$scope.storePosition = function (x, y) {
 		$scope.assertImageDimensions()
 
-		var percentX = 100 * x / $scope.image.width
-		var percentY = 100 * y / $scope.image.height
+		var xInt = Math.round(x)
+		var yInt = Math.round(y)
+
+		var percentX = 100 * xInt / $scope.image.width
+		var percentY = 100 * yInt / $scope.image.height
 
 		$scope.model.value = {
 			image: $scope.image.src,
-			left: x,
-			top: y,
+			left: xInt,
+			top: yInt,
 			percentX: percentX,
 			percentY: percentY,
 			width: $scope.image.width,
