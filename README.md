@@ -8,6 +8,18 @@ This property editor provides similar functionality to what was previously avail
 
 It's a property editor that displays an image and lets the editor place a hotspot on it.
 
+## Supported versions
+
+This property editor has been tested with Umbraco 7, 8 & 10. It should work with 11, 12 & 13 as well.
+
+> [!TIP] Looking for a version for Umbraco v15+?\
+> [Søren Kottal][SKTTL] has ported this to the new Umbraco Backoffice
+> and published it as a [new package on the Marketplace][V15PLUS].
+
+[SKTTL]: https://github.com/skttl
+[V15PLUS]: https://marketplace.umbraco.com/package/umbraco.community.imagehotspot
+
+
 ## Screenshots
 
 ### Property editor:
