@@ -12,7 +12,8 @@ It's a property editor that displays an image and lets the editor place a hotspo
 
 This property editor has been tested with Umbraco 7, 8 & 10. It should work with 11, 12 & 13 as well.
 
-> [!TIP] Looking for a version for Umbraco v15+?\
+> [!TIP]
+> **Looking for a version for Umbraco v15+?**
 > [Søren Kottal][SKTTL] has ported this to the new Umbraco Backoffice
 > and published it as a [new package on the Marketplace][V15PLUS].
 
